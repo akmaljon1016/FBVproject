@@ -15,9 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+
+from cbvapp.views import EmployeeViewSet
+
+router = DefaultRouter()
+router.register('student', EmployeeViewSet, basename='employee')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('fbvapp.url')),
-    path('api/', include('cbvapp.urls'))
+    path('api/', include('cbvapp.urls')),
+    # if you use viewset you need to use router
+    # path('api/', include('fbvapp.url')),
+    path('api/', include(router.urls)),
+
 ]
