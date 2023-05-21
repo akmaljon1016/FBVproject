@@ -28,5 +28,6 @@ urlpatterns = [
     # if you use viewset you need to use router
     # path('api/', include('fbvapp.url')),
     path('api/', include(router.urls)),
+    path('api1/', include('nsapp.urls')),
 
 ]
